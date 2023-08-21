@@ -10,8 +10,12 @@ def product_Finder(url):
     soup = BeautifulSoup(plain_text, 'html.parser')
     links = soup.find_all('div', class_='b-info__title')  # Adjust the class name as needed
     print(f"Number of links found: {len(links)}")
+    h_links = soup.find_all('a', class_='b-tile')
+    for h_link in h_links:
+        href = h_link.get('href')
     for link in links:
         print(link.get_text().strip())  # Use .get_text() to extract text content and .strip() to remove extra spaces
+        print(href)
 
 
 # Example URL from eBay's electronics category
